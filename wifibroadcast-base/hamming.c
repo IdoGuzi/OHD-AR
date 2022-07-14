@@ -67,27 +67,3 @@ void enlarge(uint16_t *enlarged, uint8_t *data, int data_len) {
         enlarged[i] |= (((enlarged[i] >> 14) & 0x01) ^ ((enlarged[i] >> 13) & 0x01) ^ ((enlarged[i] >> 12) & 0x01) ^ ((enlarged[i] >> 11) & 0x01) ^ ((enlarged[i] >> 10) & 0x01) ^ ((enlarged[i] >> 9) & 0x01) ^ ((enlarged[i] >> 8) & 0x01) ^ ((enlarged[i] >> 7) & 0x01) ^ ((enlarged[i] >> 6) & 0x01) ^ ((enlarged[i] >> 5) & 0x01) ^ ((enlarged[i] >> 4) & 0x01) ^ ((enlarged[i] >> 3) & 0x01) ^ ((enlarged[i] >> 2) & 0x01) ^ ((enlarged[i] >> 1) & 0x01) ^ ((enlarged[i] >> 0) & 0x01)) << 14;
     }
 }
-
-void bfec(int block_num, uint8_t* data, int data_len, uint16_t crc) {
-    FILE *f;
-    char bns[64];
-    sprintf(bns, "%d", block_num);
-    char *file_name = "block";
-    strcat(file_name, bns);
-    if (access(file_name, F_OK) == 0) {
-        if (f = fopen(file_name, "r+")) {
-            return;
-        }
-    }
-    fseek(f, 0, SEEK_END);
-    long fsize = ftell(f);
-    fseek(f, 0, SEEK_SET);
-
-    char *fdata = malloc(fsize + 1);
-    fread(fdata, fsize, 1, f);
-
-    
-
-
-    free(fdata);
-}
