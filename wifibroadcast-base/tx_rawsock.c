@@ -520,13 +520,13 @@ int pb_transmit_packet(int seq_nr, uint8_t *packet_transmit_buffer, int packet_h
     if (best_adapter == 5) {
         for (i = 0; i < num_interfaces; ++i) {
             //if (write(socks[i], packet_transmit_buffer, plen) < 0 ) fprintf(stderr, "!");
-            if (write(socks[i], packet_transmit_buffer, plen) < 0) {
+            if (write(socks[i], enlarged, plen) < 0) {
                 return 1;
             }
         }
     } else {
         //if (write(socks[best_adapter], packet_transmit_buffer, plen) < 0 ) fprintf(stderr, "!");
-        if (write(socks[best_adapter], packet_transmit_buffer, plen) < 0) {
+        if (write(socks[best_adapter], enlarge, plen) < 0) {
             return 1;
         }
     }
